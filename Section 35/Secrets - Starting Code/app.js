@@ -33,6 +33,16 @@ app.get("/register", (req, res) => {
   res.render("register.ejs");
 });
 
+app.get("/submit", (req, res) => {
+  res.render("submit.ejs");
+});
+
+app.post("/submit", (req, res) => {
+  const submittedSecret = req.body.secret;
+  console.log(submittedSecret);
+  res.render("secrets.ejs");
+});
+
 app.post("/register", async (req, res) => {
   try {
     bcrypt.hash(req.body.password, saltRounds, async (err, hash) => {
